@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}
+   Register
+{% endblock %}
+
+{% block main %}
+<center>
+    <div class="header" style="color: white;">
+        <h3>Register Here</h3>
+        <p>To be part of Walrus Family!</p>
+    </div>
+
+    <form action="/register" method="post">
+
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="email" name="email"
+                placeholder="Email" type="text">
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="username" name="username"
+                placeholder="Username" type="text">
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" id="password" name="password" placeholder="Password"
+                type="password">
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" id="password" name="confirmation" placeholder="Confirme Password"
+                type="password">
+        </div>
+        <div class="mb-3">
+        <input class="form-check-input" type="checkbox" id="send_email" name="send_email" value="1" uncheck >
+        <label class="form-check-label">Click here to be update about Walrus Family</label>
+        </div>
+        <hr>
+        <button class="btn btn-primary" type="submit">Register</button>
+
+    </form>
+    <style>
+        label{
+            color:white;
+            
+        }
+    </style>
+
+</center>
+{% endblock %}

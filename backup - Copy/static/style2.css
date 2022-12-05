@@ -1,0 +1,74 @@
+hr {
+  color: transparent;
+  max-height: 85px;
+  
+
+}
+
+.logo {
+  width: auto;
+  height: auto;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-top: -6px;
+
+}
+
+.navbar {
+  height: 60px;
+  width: auto;
+}
+
+.login-container {
+  position: right;
+}
+
+.login-container {
+  left: auto !important;
+  right: 0px;
+}
+
+nft-vid {
+  background-origin: padding-box;
+  display: block;
+  width: 640px;
+  padding: 50px;
+  border: 1cm;
+  position: relative;
+}
+
+#countdown {
+  background-origin: padding-box;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: grey;
+  flex-basis: 100px;
+  font-size: 60px;
+  margin-bottom: auto;
+
+}
+
+body {
+  background-image: url('assets/bg2.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-attachment: fixed;
+  position: relative;
+
+
+}
+
+#content {
+
+  position: center;
+  color: aliceblue;
+}
+
+#content h1 {
+  font-size: 64px;
+  font-weight: 600;
+}
+
+#content h1 span {
+  color: indianred;
+
+}

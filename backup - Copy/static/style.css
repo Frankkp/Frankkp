@@ -1,0 +1,162 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style-type: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',serif;
+}
+
+body {
+    /*background-color: #ffffff;*/
+    height: 100vh;
+    position: relative;
+}
+
+.content {
+    width: 80%;
+    height: 100%;
+    color: #3EA5CE;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+
+}
+
+.content h1 {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',serif;
+    font-size: 5rem;
+    margin-bottom: 5rem;
+    line-height: 5rem;
+    -webkit-text-stroke: 2px black;
+    
+}
+.nav-menu{
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    background-color: #3EA5CE;
+    color: #fff;
+    width: 100%;
+    height: 100%;
+    clip-path: circle(0% at 50% 65%);
+    transition: all 1s;
+    
+}
+.nav-content{
+    width: 78%;
+    padding: 2rem;
+    margin: auto;
+}
+.menu-toggle{
+    text-align: center;
+}
+.menu-toggle label{
+    display: inline-block;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    color: #fff;
+    background: #3EA5CE;
+    font-size: 1.5rem;
+    line-height: 100px;
+    
+}
+#menuToggle {
+    display:none;
+
+}
+#menuToggle:checked ~.nav-menu{
+    clip-path: circle(100%);
+}
+ul {
+    margin: 3rem 0rem;
+}
+ul li {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+ul a {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', serif;
+    font-size: 4.2rem;
+    color: #fff;
+    position: relative;
+}
+ul a ::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #3EA5CE;
+    transition: 1s;
+    transition-delay: 1sec;
+}
+#menuToggle:checked ~ .nav-menu ul a::after{
+    left: 100%;
+}
+.socials{
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    transform: scale(0);
+    transition: .5s;
+    transition-delay: 1.5sec;
+}
+#menuToggle:checked ~ .nav-menu,.socials{
+    transform: scale(1);
+}
+.social-icon{
+    margin: 0rem 2rem;
+}
+.social-icon span{
+    font-size: 2.2rem;
+
+}
+.close-button{
+    margin: 0rem 2rem;
+}
+.close-button label{
+    padding: 1.2rem;
+    background-color: #f4f4fc;
+    border-radius: 50%;
+}
+.close-button span{
+    font-size: 1.2rem;
+    color: #3EA5CE;
+    padding: bold;
+}
+
+
+
+
+
+/* Size for brand */
+nav .navbar-brand
+{
+    font-size: xx-large;
+}
+
+/* Colors for brand */
+nav .navbar-brand .blue
+{
+    color: #537fbe;
+}
+nav .navbar-brand .red
+{
+    color: #ea433b;
+}
+nav .navbar-brand .yellow
+{
+    color: #f5b82e;
+}
+nav .navbar-brand .green
+{
+    color: #2e944b;
+}
+

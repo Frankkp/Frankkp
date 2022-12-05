@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="utf-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.7.4-rc.1/web3.min.js"></script>
+    <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"></script>
+    <!--LOGO IN METAMASK-->
+    <link rel="shortcut icon" href="/static/reallogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style2.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'style2.css') }}">
+    <link rel="icon" href="data:;base64,=">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+
+    <title>layout {% block title %}{% endblock %} </title>
+</head>
+
+<body>
+    <!--NAV BAR-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between ">
+        <a class="navbar-brand" href="/home"><img src="static/reallogo.png" class="logo"></a>
+        
+        <div class="dropdown navbar-toggler">
+        <button class="navbar-toggler d-lg-none " type="button" data-toggle="dropdown" data-target="dropdown"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon" id="dropdownMenuButton1"></span>
+        </button>
+            <div class="dropdown-content">
+                <a href="/home">Home</a>
+                <a href="/market">Collection</a>
+                <a href="/roadmap">Roadmap </a>
+                <a href="/about">About Us </a>
+                {% if session["user_id"] %}  
+                <a href="/logout">Logout</a>
+                {% else %}
+                <a href="/login">Login</a>
+                <a href="/register">Register</a>
+                {% endif %} 
+              </div>
+            </div>
+          </div>
+
+    <!-- nav bar full size-->
+    <div class=" collapse navbar-collapse " id="navbarSupportedContent"> 
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0 ">
+            <li class="nav-item">
+                <a class="nav-link" href="/home">Home <span class="sr-only"></span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/market">Collection</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/roadmap">Road Map</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/about">About Us</a>
+            </li>    
+        </ul>
+    </div >
+  
+ 
+
+        <!-- nav bar right side-->
+        <div class="d-flex flex-row-reverse " id="navbarSupportedContent">         
+            <!--make sure loging and register change once log in-->
+            {% if session["user_id"] %}          
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0 ">
+                <a class="nav-link" href="/logout">Log out</a>  
+            </ul>
+            {% else %}
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0 ">
+                <li class="nav-item" name="login-container">
+                    <a class="nav-link" href="/login">Log In</a>
+                </li>
+                <li class="nav-item" name="login-container">
+                    <a class="nav-link" href="/register">Register</a>
+                </li>
+            </ul>
+            {% endif %}   
+        </div>
+        
+        
+        
+        <div class="icon-bar">
+            <a href="https://www.facebook.com/" class="facebook"><i class="fa fa-facebook"></i></a>
+            <a href="https://twitter.com/" class="twitter"><i class="fa fa-twitter"></i></a>
+            <a href="https://www.google.ca/" class="google"><i class="fa fa-google"></i></a>
+            <a href="https://ca.linkedin.com/" class="linkedin"><i class="fa fa-linkedin"></i></a>
+            <a href="https://www.youtube.com/" class="youtube"><i class="fa fa-youtube"></i></a>
+          </div>
+
+    </nav>
+    <!--space up the video and the nav bar-->
+    <hr>
+    <style>
+        /* Fixed/sticky icon bar (vertically aligned 50% from the top of the screen) */
+.icon-bar {
+    position: fixed;
+    top: 40%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+ }
+  
+  /* Style the icon bar links */
+  .icon-bar a {
+    display: block;
+    text-align: center;
+    padding: 16px;
+    transition: all 0.3s ease;
+    color: white;
+    font-size: 20px;
+  }
+  
+  /* Style the social media icons with color, if you want */
+  .icon-bar a:hover {
+    background-color: #000;
+  }
+  
+  .facebook {
+    background: #3B5998;
+    color: white;
+  }
+  
+  .twitter {
+    background: #55ACEE;
+    color: white;
+  }
+  
+  .google {
+    background: #dd4b39;
+    color: white;
+  }
+  
+  .linkedin {
+    background: #007bb5;
+    color: white;
+  }
+  
+  .youtube {
+    background: #bb0000;
+    color: white;
+  }
+  .hr {
+    color: transparent;
+    max-height: 85px;            
+    
+    }
+ 
+
+    .logo {
+        width: 100%;
+        height: auto;
+        max-width: 700px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-top: -0px;
+ 
+
+    }
+
+    /* The dropdown container */
+ .dropdown {
+  float: left;
+  display: inline-block;
+  
+  
+}
+
+
+/* Dropdown button */
+.dropdown  {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit; /* Important for vertical align on mobile phones */
+  margin: 0; /* Important for vertical align on mobile phones */
+  
+  
+}
+
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: relative;
+  background-color: #f9f9f9;
+  max-width: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  margin-bottom: -250px;
+  
+  
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+/* Add a grey background color to dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+  
+}
+    /*make sure that the logo stay in the nav bar when when look on an iphone */
+    @media (max-width: 768px){
+      .logo {
+        max-height: 100%;
+        width: auto;
+        margin-top: -80px;   
+    }
+}
+
+ /*hide every element from the nav bar when its phone size */
+@media (max-width: 768px){
+    .navbar  ul {
+        display:none;
+    }
+}
+@media (max-width: 820px){
+    .logo {
+      max-height: 100%;
+      width: auto;
+      margin-top: -80px;   
+  }
+}
+
+/*hide every element from the nav bar when its phone size */
+@media (max-width: 820px){
+  .navbar  ul {
+      display:none;
+  }
+}
+   @media (max-width: 912px){
+      .logo {
+        max-height: 100%;
+        width: auto;
+        margin-top: -80px;   
+    }
+}
+
+ /*hide every element from the nav bar when its phone size */
+@media (max-width: 912px){
+    .navbar  ul {
+        display:none;
+    }
+}
+     /* reponsive nav bar */
+    .navbar-toggler {
+        right: 0;
+        position: absolute;
+        margin: 10px;
+        margin-top: -10px; 
+    }
+
+    .navbar {
+        max-width: 100%;
+        height: 60px;
+        width: auto;         
+        display: flex;
+        justify-content:flex-end ;
+        margin: 0 auto;  
+    }
+ 
+
+    .login-container {
+        position: right;  
+    }
+
+
+    body {
+        background-image: url('static/bg2.jpg');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        background-attachment: fixed;
+        position: relative;
+        background-size: cover;
+        max-width:100%;
+        height:auto;    
+    }
+
+    </style>
+    <main>
+        {% block main %} {% endblock %}
+    </main>
+</body>
+
+</html>

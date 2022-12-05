@@ -1,0 +1,24 @@
+{
+	"folders": [
+		{
+			"path": "../../Users/Francis/francis/Project"
+		}
+	],
+	"settings": {
+		"sqltools.connections": [
+			{
+				"mysqlOptions": {
+					"authProtocol": "default"
+				},
+				"previewLimit": 50,
+				"server": "localhost",
+				"port": 3300,
+				"driver": "MySQL",
+				"name": "project",
+				"database": "project.sql",
+				"username": "francis",
+				"password": ""
+			}
+		]
+	}
+}

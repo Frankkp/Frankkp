@@ -1,0 +1,201 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+<!--VideoNFT-->
+<center>
+
+  <video width="600" height="auto" autoplay muted loop id="nft-vid" >
+    <source src="static/nftvideo.MOV" type="video/mp4">
+    <style>
+      #nft-vid {
+        background-origin: padding-box;
+        display: block;       
+        padding: 50px;
+        border: 1cm;
+        position: relative;
+        max-height:600px;
+        max-width: 100%;
+      }
+    </style>
+  </video>
+  <div id="content">
+    
+    <h1> We're <span>Launching</span> Soon! </h1>
+  </div>
+  <!--countdown-->
+  <p id="countdown"></p>
+  <!-- Connect to metamask  GOT ALL THE INFORMATION HERE :https://docs.metamask.io/guide/registering-function-names.html#verify-->
+  <hr>
+  <input id="metamask" type="button" value="Connect Wallet" onclick="connect();">
+  <div id="content">
+    <h3> Pay With Metamask To Book Your Spot!</h3>
+  </div>
+  <div class="tip-button" id="send-button" type="button"></div>
+  
+   
+  
+  <style>
+    .tip-button {
+      width: 304px;
+      height: 89px;
+      background-size: 100%;
+      background-image: url('static/4_pay_mm_off.png');
+      cursor: pointer;
+      background-repeat: no-repeat;
+    
+    }
+    .tip-button:hover {
+      background-image: url('static/4_pay_mm_off.png');
+    }
+    
+    .tip-button:active {
+      background-image: url('static/4_pay_mm_off.png');
+    }
+
+    
+    #metamask{
+      color: white;
+      background: transparent;
+      flex-basis: 50px;
+      font-size: 30px;
+      
+      
+      
+    }
+    #countdown {
+      background-origin: padding-box;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      color: white;
+      flex-basis: 80px;
+      font-size: 40px;
+      margin-bottom: auto;
+      padding: auto;
+      border: 2px solid #fff;
+
+    }
+
+    body {
+      background-image: url('static/bg2.jpg');
+      background-repeat: no-repeat;
+      background-size: 100%;
+      background-attachment: fixed;
+      position: relative;
+      background-size: cover;
+
+
+    }
+
+    #content {
+      
+
+      position: center;
+      color: aliceblue;
+    }
+
+    #content h1 {
+      font-size: 64px;
+      font-weight: 600;
+    }
+
+    #content h1 span {
+      color: indianred;
+
+    }
+  </style>
+</center>
+<script>
+
+
+   let walletAddress;
+
+
+      /* To connect using MetaMask */
+      async function connect() {
+        if (window.ethereum) {
+           await window.ethereum.request({ method: "eth_requestAccounts" });
+           window.web3 = new Web3(window.ethereum);
+          // MIK const account = web3.eth.accounts;
+           const account = web3.eth.accounts;
+           //Get the current MetaMask selected/active wallet
+           walletAddress = account.givenProvider.selectedAddress;
+           console.log(`Wallet: ${walletAddress}`);
+           document.getElementById("metamask").value = walletAddress;
+          
+ 
+           // get the balance of the wallet
+           ethereum.request({method: 'eth_getBalance' , params: [walletAddress, 'latest']}).then(result => {
+            console.log(result);
+            let wei = parseInt(result,16); 
+            let balance = wei / (10**18);
+            console.log(balance + " ETH");
+     
+          });
+
+        } else {
+           console.log("No wallet");
+        }
+      };
+
+
+
+      //make a transaction
+      document.getElementById('send-button').addEventListener('click', event =>{
+        let transactionParam = {
+          to: '0x1bb5C5Fb8799e8C340531D15Ac69088768D56CC2',
+          from: walletAddress,
+          value: '0x38D7EA4C68000'
+        };
+        
+        ethereum.request({method: 'eth_sendTransaction', params:[transactionParam]}).then(txhash => {
+          console.log(txhash);
+          checkTransactionconfirmation(txhash).then(r => alert(r));
+        });
+      });
+      function checkTransactionconfirmation(txhash) {
+
+        let checkTransactionLoop = () => {
+          return ethereum.request({method:'eth_getTransactionReceipt',params:[txhash]}).then(r => {
+            if(r !=null) return 'confirmed';
+            else return checkTransactionLoop();
+          });
+        };
+      
+        return checkTransactionLoop();
+      }
+ 
+
+
+  // Set the date we're counting down to
+  var countDownDate = new Date("June 28,2023 12:00:00").getTime();
+
+  // Update the count down every 1 second
+  var x = setInterval(function () {
+
+    // Get today's date and time
+    var now = new Date().getTime();
+
+    // Find the distance between now and the count down date
+    var distance = countDownDate - now;
+
+    // Time calculations for days, hours, minutes and seconds
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // Display the result in the element with id="countdown"
+    document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+      + minutes + "m " + seconds + "s ";
+
+    // If the count down is finished, write some text
+    if (distance < 0) {
+      clearInterval(x);
+      document.getElementById("countdown").innerHTML = "EXPIRED";
+    }
+  }, 1000);
+</script>
+{% endblock %}

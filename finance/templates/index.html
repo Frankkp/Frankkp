@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+index
+{% endblock %}
+
+{% block main %}
+<table class="table table-dark table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Symbol</th>
+            <th scope="col">Shares</th>
+            <th scope="col">Price</th>
+            <th scope="col">TOTAL</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in database %}
+        <tr>
+            <td>{{ row["symbol"] }}</td>
+            <td>{{ row["shares"] }}</td>
+            <td>{{ usd(row["price"]) }}</td>
+            <td>{{ usd(row["total_price"]) }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    <tfoot>
+        <tr>
+            <td></td>
+            <td></td>
+            <th scope="1">CASH</th>
+            <th scope="1">{{ cash|usd }}</th>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <th scope="1">TOTAL</th>
+            <th scope="1">{{ total|usd }}</th>
+        </tr>
+    </tfoot>
+</table>
+
+{% endblock %}

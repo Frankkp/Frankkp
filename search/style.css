@@ -1,0 +1,131 @@
+.search_bar {
+    text-align: center;
+    margin-top: 400px ;
+    
+}
+.nav_right{
+    
+    right: 0;
+    position: absolute;
+    margin: 10px;
+    margin-top: -470px;
+    display: flex; 
+ 
+}
+a ~ a{
+    padding-left: 15px; 
+}
+#googleimg {
+    
+    height: 350px;
+    margin-top: -450px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    background: transparent;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: white;
+
+    
+}
+
+
+#search {
+    height: 20px;
+    
+    
+    content:90%;
+    padding: 10px; 
+    margin:0 auto;
+    width:575px;
+    border-radius:30px;
+    border:1px solid #dcdcdc;
+}
+
+.voice{
+    height:20px;
+    position:relative;
+    top:5px;
+    left:-35px;
+  }
+
+#corner_right{
+    position:fixed;
+    top:20px;
+    right:10px;
+}
+.advance_search h3{
+    color: red;
+    font-size: 20px;
+    margin-bottom: 20px;
+    margin-left: 35px;
+    margin-top: 15px;
+    font-weight: normal;
+}
+.InputOne .textDesHeading{
+    font-size: 16px;
+    min-width: 167px;
+    width: 16%;
+    font-weight: 500;
+    color:black;
+}
+.InputOne{
+    display: flex;
+    align-items: center;
+    max-width: 1140px;
+    min-width: 200px;
+    width: 96%;
+    margin: 40px 2% 0 45px;
+}
+.InputOne .textDes{
+    width: 200px;
+    font-size: 13px;
+}
+.InputOne .input-field{
+    min-width: 167px;
+    width: 50%;
+}
+.InputOne .input-field input {
+    border-radius: 1px;
+    border: 1px solid grey;
+    font-size: 13px;
+    height: 25px;
+    padding: 1px 8px;
+    width: 100%;
+}
+.InputOne .todo {
+    width: 32%;
+    min-width: 16px;
+    color: grey;
+    font-size: 11px;
+    white-space: pre;
+}
+span{
+    color: grey;
+    font-family: monospace;
+    font-size: 11px;
+    white-space: pre;
+
+}
+.InputOne .button{
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+}
+.button input{
+    background-color: rgb(86, 97, 255);
+    background-image: -webkit-repeating-linear-gradient(top,blue,blue);
+    color: #dcdcdc;
+    height: 30px;
+    min-width: 120px;
+    border-radius: 2px;
+    font-size: 11px;
+    font-weight: bold;
+}
+.ToDoHeading{
+    display: block;
+    margin-left: 150px;
+}

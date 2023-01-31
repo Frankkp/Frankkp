@@ -1,8 +1,9 @@
 ### Hi there, I'm Frank Knight 👋
 - 🔭 I’m currently working on CS50W: Web Programming with Python and JavaScript.🔭
-- 📫 How to reach me: fknight.tech@gmail.com 
+- 📫 How to reach me: fknight.tech@gmail.com 📫
 - Always looking for new chanllenge!
-- 
+- ⚡Can wright code : Flask , Django , Python , JavaScript , C , CSS , HTML , SQL ⚡
+-  🌱 I’m currently learning Angular 🌱
 <!--
 **Frankkp/Frankkp** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
